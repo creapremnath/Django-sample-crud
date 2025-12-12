@@ -83,9 +83,9 @@ CORS_ALLOW_HEADERS = [
     "x-requested-with",
 ]
 
-SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = 'None'
 SESSION_COOKIE_SECURE = False  # only for localhost
-CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SAMESITE = 'None'
 CSRF_COOKIE_SECURE = False
 
 
