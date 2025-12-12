@@ -60,7 +60,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "django-sample-crud.onrender.com",
+    "https://django-sample-crud.onrender.com",
 ]
 
 
@@ -68,7 +68,7 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
-    "django-sample-crud.onrender.com",
+    "https://django-sample-crud.onrender.com",
 ]
 
 CORS_ALLOW_HEADERS = [
