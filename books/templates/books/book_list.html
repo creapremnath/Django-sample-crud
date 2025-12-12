@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row g-4">
+    <div class="col-12">
+        <div class="card card-elevated">
+            <div class="card-body d-flex flex-wrap align-items-center justify-content-between">
+                <div>
+                    <p class="text-uppercase text-muted fw-semibold small mb-1">Overview</p>
+                    <h4 class="fw-bold mb-0">Books Collection</h4>
+                    <p class="text-muted mb-0">{{ books|length }} item{% if books|length != 1 %}s{% endif %}</p>
+                </div>
+                <a class="btn btn-lg btn-primary" href="{% url 'book_create' %}">
+                    + Add Book
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% if books %}
+        {% for book in books %}
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 card-elevated">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex align-items-start justify-content-between mb-3">
+                        <div>
+                            <p class="text-uppercase text-muted fw-semibold small mb-1">Title</p>
+                            <h5 class="fw-bold mb-0">{{ book.title }}</h5>
+                            <p class="text-muted mb-0">by {{ book.author }}</p>
+                        </div>
+                        <span class="badge bg-primary-subtle text-primary fw-semibold">ID {{ book.id }}</span>
+                    </div>
+                    {% if book.description %}
+                    <p class="text-muted flex-grow-1 mb-3">{{ book.description|truncatewords:30 }}</p>
+                    {% else %}
+                    <p class="text-muted flex-grow-1 mb-3 fst-italic">No description</p>
+                    {% endif %}
+                    <div class="d-flex gap-2">
+                        <a class="btn btn-outline-primary w-100" href="{% url 'book_update' book.id %}">Edit</a>
+                        <a class="btn btn-outline-danger w-100" href="{% url 'book_delete' book.id %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+    <div class="col-12">
+        <div class="card card-elevated">
+            <div class="card-body py-5 text-center">
+                <h5 class="fw-bold mb-2">No books yet</h5>
+                <p class="text-muted mb-3">Start by adding your first book.</p>
+                <a class="btn btn-primary" href="{% url 'book_create' %}">Create one</a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
